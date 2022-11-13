@@ -30,53 +30,6 @@ inpt.addEventListener('keyup', (e)=> {
     addTask();
 });
 
-filterBtn.addEventListener('click', ()=> {
-    if(arrEl.length>1)
-    {
-        todosC.innerHTML = `<div class="d-flex align-items-center justify-content-center w-100 p-3">
-        <div class="spinner-border text-warning" role="status"></div> <span class="sr-only ms-3">Filtering...</span> </div>`
-        if(isAsc)
-        {
-            arrEl.sort(function(a, b) {
-                if (a.innerText.trim().split('')[0] >= b.innerText.trim().split('')[0])
-                return 1;
-                if (a.innerText.trim().split('')[0] < b.innerText.trim().split('')[0])
-                return -1;
-            });
-            setTimeout(()=>{
-            todosC.innerHTML="";
-            for (let index = 0; index < arrEl.length; index++) {
-                todosC.append(arrEl[index]);
-            }todosC.append(createElementFromHTML(`<div class="todo-container" id="todo-cont">
-            <input class="todo-input" type="text" id="task-inpt"/>
-            </div>`)); inpt = document.getElementById("task-inpt"); todoInpt = document.getElementById("todo-cont"); inpt.focus()},500);
-            isAsc=false;
-            filterBtn.classList.replace("bx-sort-up","bx-sort-down");
-        }
-        else {
-            arrEl.sort(function(a, b) {
-                if (a.innerText.trim().split('')[0] <= b.innerText.trim().split('')[0])
-                return 1;
-                if (a.innerText.trim().split('')[0] > b.innerText.trim().split('')[0])
-                return -1;
-            });
-            setTimeout(()=>{
-            todosC.innerHTML="";
-            for (let index = 0; index < arrEl.length; index++) {
-                todosC.append(arrEl[index]);
-            }todosC.append(createElementFromHTML(`<div class="todo-container" id="todo-cont">
-            <input class="todo-input" type="text" id="task-inpt"/>
-            </div>`)); inpt = document.getElementById("task-inpt"); todoInpt = document.getElementById("todo-cont"); inpt.focus()},500);
-            isAsc=true;
-            filterBtn.classList.replace("bx-sort-down","bx-sort-up");
-        }
-    }
-    else{
-        error.innerHTML = `<div class="d-flex align-items-center"><span>No tasks to filter!</span> <i class='bx bx-x-circle remove-error' onclick="removeErr()"></i></div>`;
-        error.classList.toggle("active");
-    }
-});
-
 function createElementFromHTML(htmlString) {
     var div = document.createElement('div');
     div.innerHTML = htmlString.trim();
@@ -168,6 +121,53 @@ function checkFavourite(element)
         element.style.color = "#C4C4C4";
     }
 }
+
+filterBtn.addEventListener('click', ()=> {
+    if(arrEl.length>1)
+    {
+        todosC.innerHTML = `<div class="d-flex align-items-center justify-content-center w-100 p-3">
+        <div class="spinner-border text-warning" role="status"></div> <span class="sr-only ms-3">Filtering...</span> </div>`
+        if(isAsc)
+        {
+            arrEl.sort(function(a, b) {
+                if (a.innerText.trim().split('')[0] >= b.innerText.trim().split('')[0])
+                return 1;
+                if (a.innerText.trim().split('')[0] < b.innerText.trim().split('')[0])
+                return -1;
+            });
+            setTimeout(()=>{
+            todosC.innerHTML="";
+            for (let index = 0; index < arrEl.length; index++) {
+                todosC.append(arrEl[index]);
+            }todosC.append(createElementFromHTML(`<div class="todo-container" id="todo-cont">
+            <input class="todo-input" type="text" id="task-inpt"/>
+            </div>`)); inpt = document.getElementById("task-inpt"); todoInpt = document.getElementById("todo-cont"); inpt.focus()},500);
+            isAsc=false;
+            filterBtn.classList.replace("bx-sort-up","bx-sort-down");
+        }
+        else {
+            arrEl.sort(function(a, b) {
+                if (a.innerText.trim().split('')[0] <= b.innerText.trim().split('')[0])
+                return 1;
+                if (a.innerText.trim().split('')[0] > b.innerText.trim().split('')[0])
+                return -1;
+            });
+            setTimeout(()=>{
+            todosC.innerHTML="";
+            for (let index = 0; index < arrEl.length; index++) {
+                todosC.append(arrEl[index]);
+            }todosC.append(createElementFromHTML(`<div class="todo-container" id="todo-cont">
+            <input class="todo-input" type="text" id="task-inpt"/>
+            </div>`)); inpt = document.getElementById("task-inpt"); todoInpt = document.getElementById("todo-cont"); inpt.focus()},500);
+            isAsc=true;
+            filterBtn.classList.replace("bx-sort-down","bx-sort-up");
+        }
+    }
+    else{
+        error.innerHTML = `<div class="d-flex align-items-center"><span>No tasks to filter!</span> <i class='bx bx-x-circle remove-error' onclick="removeErr()"></i></div>`;
+        error.classList.toggle("active");
+    }
+});
 
 error.addEventListener('click', ()=>{
     error.classList.remove("active");

@@ -70,9 +70,7 @@ body{
 .todo-container {
     margin: auto;
     width: 95%;
-    margin: 10px;
-    margin-top: 6px;
-    margin-bottom: 10px;
+    margin: 6px 10px 10px 10px;
     display: flex;
     align-items: center;
     padding: 4px;
@@ -118,8 +116,7 @@ body{
 .circle-plus {
     background: #9953F1;
     border-radius: 71px;
-    padding: 6.5px;
-    padding-right: 9px;
+    padding:  6.5px;
     padding-right: 9px;
     outline: none;
     border: none;
@@ -129,8 +126,7 @@ body{
 .bx-plus {
     color: #fff;
     font-size: 22px;
-    padding-top: 3px;
-    padding-left: 3px;
+    padding: 3px 0px 0px 3px;
 }
 
 .adding-btn span{
